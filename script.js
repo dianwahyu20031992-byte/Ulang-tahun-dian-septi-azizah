@@ -1,12 +1,14 @@
 function goToScreen(screenNumber) {
+  // Sembunyikan semua layar
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   
+  // Tampilkan layar tujuan
   const targetScreen = document.getElementById('screen-' + screenNumber);
   if (targetScreen) {
     targetScreen.classList.add('active');
   }
 
-  // Putar musik saat tombol diklik
+  // Putar musik saat ada aksi klik tombol
   const music = document.getElementById('bg-music');
   if (music) {
     music.muted = false;
@@ -17,6 +19,7 @@ function goToScreen(screenNumber) {
     });
   }
 
+  // Jalankan efek ketik otomatis saat sampai di layar 4
   if (screenNumber === 4) {
     startTypewriter();
   }
@@ -91,7 +94,6 @@ function openPopup(title, text, imgSrc) {
 // Logika Kupon Virtual
 let claimedCount = 0;
 function claimCoupon(element, title, text) {
-  // Sembunyikan gambar popup untuk kupon
   const pImg = document.getElementById('popup-img');
   if (pImg) pImg.style.display = 'none';
 
@@ -103,14 +105,12 @@ function claimCoupon(element, title, text) {
   if (pText) pText.innerText = text;
   if (pModal) pModal.style.display = 'flex';
 
-  // Tandai kupon sudah dibuka
   if (!element.classList.contains('opened')) {
     element.classList.add('opened');
     element.querySelector('.box-icon').innerText = '🎉';
     claimedCount++;
   }
 
-  // Jika semua 4 kado sudah dibuka, munculkan tombol ke ucapan
   if (claimedCount >= 4) {
     const btnNext = document.getElementById('btn-to-screen4');
     if (btnNext) btnNext.classList.remove('hidden');
@@ -122,8 +122,8 @@ function closePopup() {
   if (pModal) pModal.style.display = 'none';
 }
 
-// Efek Ketik Otomatis Ucapan
-const fullText = "Selamat ulang tahun ya sayang.\n\nSemoga hari ini menjadi awal dari banyak kebahagiaan baru. Semoga semua doa dan impianmu satu per satu menjadi kenyataan.\n\nTerima kasih sudah hadir dan menjadi bagian terindah dalam hidupku.\n\nI Love You ❤️";
+// Ucapan Spesial Ulang Tahun
+const fullText = "Selamat 23 tahun, Dian.\nDimanapun selalu hangat karena ada kamu.\nTerima kasih sudah jadi adik terbaik. Mas sayang kamu ❤️\n\nSemoga umur berkah, rezeki lancar, mimpi terkabul.\nMas selalu doain kamu 🤲\n\nUntuk Dian di 23 tahunnya.\nTumbuhlah jadi perempuan hebat.\nKarena kamu layak dapat dunia yang lembut. ❤️\n\nBarakallah fii umrik adikku tersayang.\nDi umur kamu yang baru ini, semoga Allah jaga terus senyum kamu.\n\nKamu itu paket lengkap: lucu, pinter, kadang nyebelin 😂\nTapi Mas bersyukur banget punya adek kayak kamu.\n\nTerus jadi anak hebat ya. Mas selalu support kamu!";
 
 function startTypewriter() {
   let i = 0;
