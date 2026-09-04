@@ -1,26 +1,31 @@
 function goToScreen(screenNumber) {
+  // Sembunyikan semua layar
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   
+  // Tampilkan layar yang dituju
   const targetScreen = document.getElementById('screen-' + screenNumber);
   if (targetScreen) {
     targetScreen.classList.add('active');
   }
 
-  // Putar musik saat klik tombol pertama
+  // Putar musik saat ada interaksi klik
   const music = document.getElementById('bg-music');
   if (music) {
+    music.muted = false;
     music.play().then(() => {
-      console.log("Musik berhasil diputar");
-    }).catch(e => console.log("Autoplay ditahan browser:", e));
+      console.log("Musik berhasil diputar!");
+    }).catch(err => {
+      console.log("Autoplay musik ditahan oleh browser:", err);
+    });
   }
 
-  // Jalankan efek ketik jika masuk halaman 4
+  // Jalankan efek ketik ucapan jika masuk layar ke-4
   if (screenNumber === 4) {
     startTypewriter();
   }
 }
 
-// Logika Love Meter (Hati)
+// Logika Tahan Tombol Hati (Love Meter)
 let percent = 0;
 let timer = null;
 
@@ -88,7 +93,7 @@ function closePopup() {
   if (pModal) pModal.style.display = 'none';
 }
 
-// Efek Ketik Otomatis (Fix Spasi)
+// Efek Ketik Otomatis (Fix Spasi & Enter)
 const fullText = "Selamat ulang tahun ya sayang.\n\nSemoga hari ini menjadi awal dari banyak kebahagiaan baru. Semoga semua doa dan impianmu satu per satu menjadi kenyataan.\n\nTerima kasih sudah hadir dan menjadi bagian terindah dalam hidupku.\n\nI Love You ❤️";
 
 function startTypewriter() {
