@@ -1,0 +1,186 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #a81363, #4a0029);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+}
+
+.screen {
+  display: none;
+  animation: fadeIn 0.8s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.subtitle {
+  font-weight: 300;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.title {
+  font-family: 'Sacramento', cursive;
+  font-size: 3rem;
+  color: #ffd1dc;
+  margin-bottom: 30px;
+}
+
+.title-script {
+  font-family: 'Sacramento', cursive;
+  font-size: 2.8rem;
+  color: #ffd1dc;
+}
+
+.btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: white;
+  color: #a81363;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Love Meter */
+.counter {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.heart-box {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  border: 2px solid #ffb6c1;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.4);
+}
+
+.heart-icon {
+  font-size: 2.5rem;
+}
+
+.heart-box span {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Galeri Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Popup Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #2a0018;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 320px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #ffb6c1;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Screen 4 Ucapan */
+.hbd-title {
+  font-family: 'Sacramento', cursive;
+  font-size: 2.5rem;
+  color: #ffd1dc;
+}
+
+.name-title {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.message-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  min-height: 120px;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+
