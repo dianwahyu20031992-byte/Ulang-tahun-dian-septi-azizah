@@ -9,20 +9,20 @@
 </head>
 <body>
 
-  <!-- Musik Latar -->
-  <audio id="bg-music" loop preload="auto">
-    <source src="musik.mp3" type="audio/mpeg">
-  </audio>
+  <div style="position: fixed; top: 15px; right: 15px; z-index: 999;">
+    <audio id="bg-music" loop controls style="height: 32px; width: 130px; opacity: 0.85;">
+      <source src="musik.mp3" type="audio/mpeg">
+      Browser kamu tidak mendukung pemutar audio.
+    </audio>
+  </div>
 
   <div class="container">
-    <!-- Screen 1: Cover -->
     <div id="screen-1" class="screen active">
       <h2 class="subtitle">A Little Surprise</h2>
       <h1 class="title">Just For You</h1>
       <button class="btn" onclick="goToScreen(2)">Open Your Surprise ✨</button>
     </div>
 
-    <!-- Screen 2: Love Meter -->
     <div id="screen-2" class="screen">
       <p class="desc">Sebelum lanjut aku ingin tau kamu sayang aku berapa persen</p>
       <div class="counter"><span id="percent">0</span>% <span id="emoji">🤬</span></div>
@@ -35,7 +35,6 @@
       <button id="next-to-gallery" class="btn hidden" onclick="goToScreen(3)">NEXT ➔</button>
     </div>
 
-    <!-- Screen 3: Galeri Foto -->
     <div id="screen-3" class="screen">
       <h2 class="title-script">Our Memories</h2>
       <p class="sub-desc">Klik foto untuk melihat pesan</p>
@@ -64,7 +63,6 @@
       <button class="btn" style="margin-top: 20px;" onclick="goToScreen(4)">OPEN SURPRISE ➔</button>
     </div>
 
-    <!-- Screen 4: Ucapan & Fireworks -->
     <div id="screen-4" class="screen">
       <h1 class="hbd-title">Happy Birthday</h1>
       <h1 class="name-title">DIAN SEPTI AZIZAH</h1>
@@ -77,7 +75,6 @@
     </div>
   </div>
 
-  <!-- Modal Popup Foto -->
   <div id="popup-modal" class="modal" onclick="closePopup()">
     <div class="modal-content" onclick="event.stopPropagation()">
       <span class="close-btn" onclick="closePopup()">&times;</span>
