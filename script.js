@@ -1,31 +1,28 @@
 function goToScreen(screenNumber) {
-  // Sembunyikan semua layar
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   
-  // Tampilkan layar yang dituju
   const targetScreen = document.getElementById('screen-' + screenNumber);
   if (targetScreen) {
     targetScreen.classList.add('active');
   }
 
-  // Putar musik saat ada interaksi klik
+  // Putar musik saat tombol diklik
   const music = document.getElementById('bg-music');
   if (music) {
     music.muted = false;
     music.play().then(() => {
-      console.log("Musik berhasil diputar!");
+      console.log("Musik diputar!");
     }).catch(err => {
-      console.log("Autoplay musik ditahan oleh browser:", err);
+      console.log("Autoplay ditahan browser:", err);
     });
   }
 
-  // Jalankan efek ketik ucapan jika masuk layar ke-4
   if (screenNumber === 4) {
     startTypewriter();
   }
 }
 
-// Logika Tahan Tombol Hati (Love Meter)
+// Logika Love Meter (Hati)
 let percent = 0;
 let timer = null;
 
@@ -84,8 +81,40 @@ function openPopup(title, text, imgSrc) {
 
   if (pTitle) pTitle.innerText = title;
   if (pText) pText.innerText = text;
-  if (pImg) pImg.src = imgSrc;
+  if (pImg) {
+    pImg.src = imgSrc;
+    pImg.style.display = 'block';
+  }
   if (pModal) pModal.style.display = 'flex';
+}
+
+// Logika Kupon Virtual
+let claimedCount = 0;
+function claimCoupon(element, title, text) {
+  // Sembunyikan gambar popup untuk kupon
+  const pImg = document.getElementById('popup-img');
+  if (pImg) pImg.style.display = 'none';
+
+  const pTitle = document.getElementById('popup-title');
+  const pText = document.getElementById('popup-text');
+  const pModal = document.getElementById('popup-modal');
+
+  if (pTitle) pTitle.innerText = title;
+  if (pText) pText.innerText = text;
+  if (pModal) pModal.style.display = 'flex';
+
+  // Tandai kupon sudah dibuka
+  if (!element.classList.contains('opened')) {
+    element.classList.add('opened');
+    element.querySelector('.box-icon').innerText = '🎉';
+    claimedCount++;
+  }
+
+  // Jika semua 4 kado sudah dibuka, munculkan tombol ke ucapan
+  if (claimedCount >= 4) {
+    const btnNext = document.getElementById('btn-to-screen4');
+    if (btnNext) btnNext.classList.remove('hidden');
+  }
 }
 
 function closePopup() {
@@ -93,7 +122,7 @@ function closePopup() {
   if (pModal) pModal.style.display = 'none';
 }
 
-// Efek Ketik Otomatis (Fix Spasi & Enter)
+// Efek Ketik Otomatis Ucapan
 const fullText = "Selamat ulang tahun ya sayang.\n\nSemoga hari ini menjadi awal dari banyak kebahagiaan baru. Semoga semua doa dan impianmu satu per satu menjadi kenyataan.\n\nTerima kasih sudah hadir dan menjadi bagian terindah dalam hidupku.\n\nI Love You ❤️";
 
 function startTypewriter() {
